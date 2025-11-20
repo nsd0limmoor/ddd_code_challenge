@@ -11,10 +11,10 @@ public class RaumAnlage {
 
   private RaumRepository raumRepository;
 
-  public void legeRaumAn(String nummer, String name) {
+  public Raum legeRaumAn(String nummer, String name) {
     final var raum = new Raum(nummer, name);
     pruefeEindeutigkeit(raum.getNummer());
-    raumRepository.legeRaumAn(raum);
+    return raumRepository.legeRaumAn(raum);
   }
 
   private void pruefeEindeutigkeit(final Raum.Nummer nummer) {

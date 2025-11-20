@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import neusta.ddd_code_challange.application.raum.RaumAbfrage;
 import neusta.ddd_code_challange.application.raum.RaumAnlage;
 import neusta.ddd_code_challange.infrastructure.raum.rest.dto.RaumDto;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +27,14 @@ class RaumController {
   }
 
   @PostMapping("/room")
-  String createRoom(@RequestBody RaumDto raum) {
+  RaumDto createRoom(@RequestBody RaumDto raum) {
+    final var created = raumAnlage.legeRaumAn(raum.getNummer(), raum.getName());
+    return new RaumDto(created.getNummer().getValue(), created.getName().getValue());
+  }
 
+  @GetMapping("/room/{id}")
+  RaumDto findRoom(@PathVariable final String id) {
+    final var raum = raumAbfrage.ladeRaum(id);
+    return new RaumDto(raum.getNummer().getValue(), raum.getName().getValue());
   }
 }
