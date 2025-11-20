@@ -13,6 +13,7 @@ public class RaumAbfrage {
 
   public Raum ladeRaum(String nummer) {
     final var raumNummer = new Raum.Nummer(nummer);
+    // handle some exceptions
     return raumRepository.ladeRaum(raumNummer);
   }
 }

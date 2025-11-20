@@ -18,8 +18,8 @@ public class Raum {
     this.name = new Name(name);
   }
 
+  @Getter
   public static class Id {
-    @Getter
     private UUID id;
 
     public Id(UUID id) {
@@ -33,11 +33,11 @@ public class Raum {
     private String value;
 
     public Nummer(final String nummer) {
-      validate(nummer);
+      validiere(nummer);
       value = nummer;
     }
 
-    private void validate(final String nummer) {
+    private void validiere(final String nummer) {
       if (nummer == null || nummer.isBlank()) {
         throw new IllegalArgumentException("Nummer must not be empty");
       }
@@ -56,11 +56,11 @@ public class Raum {
     private String value;
 
     public Name(final String name) {
-      validate(name);
+      validiere(name);
       value = name;
     }
 
-    private void validate(final String name) {
+    private void validiere(final String name) {
       if (name == null || name.isBlank()) {
         throw new IllegalArgumentException("Name must not be empty");
       }

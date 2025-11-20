@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RaumAnlage {
 
-  private RaumRepository raumRepository;
+  private final RaumRepository raumRepository;
 
   public Raum legeRaumAn(String nummer, String name) {
     final var raum = new Raum(nummer, name);
