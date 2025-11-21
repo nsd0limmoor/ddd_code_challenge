@@ -22,8 +22,8 @@ public class Raum {
         personen = new HashSet<>();
     }
 
-    public void fuegePersonHinzu(Person.Id person) {
-        personen.add(person);
+    public void fuegePersonHinzu(Person.Id personId) {
+        personen.add(personId);
     }
 
     public Set<Person.Id> getPersonen() {

@@ -25,7 +25,7 @@ public class Person {
   }
 
   public String getKurzschreibweise() {
-    return name.vorname + (name.namensZusatz != null ? " " + name.namensZusatz : " ") + name.nachname + " (" + benutzerName + ")";
+    return name.vorname + (name.namensZusatz != null ? " " + name.namensZusatz : " ") + name.nachname + " (" + benutzerName.benutzerName + ")";
   }
 
   public record Id(UUID id) {

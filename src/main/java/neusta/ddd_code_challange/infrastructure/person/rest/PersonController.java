@@ -24,6 +24,7 @@ public class PersonController {
         );
 
         return new PersonDto(
+            created.getId().id(),
             created.getName().getVorname(),
             created.getName().getNachname(),
             created.getName().getNamensZusatz(),

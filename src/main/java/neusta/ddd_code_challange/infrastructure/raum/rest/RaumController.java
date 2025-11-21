@@ -42,7 +42,7 @@ class RaumController {
           .map(RaumBelegungDto::new)
           .toList();
     }
-    return new RaumDto(created.getNummer().value(), created.getName().value(), personDtos);
+    return new RaumDto(created.getId().id(), created.getNummer().value(), created.getName().value(), personDtos);
   }
 
   @GetMapping("/{id}")
@@ -53,7 +53,7 @@ class RaumController {
         .map(RaumBelegungDto::new)
         .toList();
 
-    return new RaumDto(raum.getNummer().value(), raum.getName().value(), personDtos);
+    return new RaumDto(raum.getId().id(), raum.getNummer().value(), raum.getName().value(), personDtos);
   }
 
   @PutMapping("/{roomId}/person/{personId}")
@@ -64,6 +64,6 @@ class RaumController {
         .map(RaumBelegungDto::new)
         .toList();
 
-    return new RaumDto(raum.getNummer().value(), raum.getName().value(), personDtos);
+    return new RaumDto(raum.getId().id(), raum.getNummer().value(), raum.getName().value(), personDtos);
   }
 }
