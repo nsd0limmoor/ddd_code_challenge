@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RaumRepository {
 
-    Raum ladeRaum(Raum.Nummer nummer);
+    Raum ladeRaum(Raum.Id raumId);
 
     Raum legeRaumAn(Raum raum);
 

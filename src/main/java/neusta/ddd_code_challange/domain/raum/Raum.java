@@ -1,21 +1,22 @@
 package neusta.ddd_code_challange.domain.raum;
 
+import lombok.Getter;
+import neusta.ddd_code_challange.domain.person.Person;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-import lombok.Getter;
-import neusta.ddd_code_challange.domain.person.Person;
 
 @Getter
 public class Raum {
 
-  private Id id;
+  private final Id id;
 
-  private Nummer nummer;
+  private final Nummer nummer;
 
-  private Name name;
+  private final Name name;
 
-  private Set<Person.Id> personen;
+  private final Set<Person.Id> personen;
 
   public Raum(String nummer, String name) {
     id = new Id(UUID.randomUUID());
@@ -34,7 +35,7 @@ public class Raum {
 
   @Getter
   public static class Id {
-    private UUID id;
+    private final UUID id;
 
     public Id(UUID id) {
       this.id = id;
@@ -44,7 +45,7 @@ public class Raum {
   @Getter
   public static class Nummer {
 
-    private String value;
+    private final String value;
 
     public Nummer(final String nummer) {
       validiere(nummer);
@@ -67,7 +68,7 @@ public class Raum {
   @Getter
   public static class Name {
 
-    private String value;
+    private final String value;
 
     public Name(final String name) {
       validiere(name);

@@ -15,20 +15,20 @@ public class RaumBelegung {
 
     private final PersonRepository personRepository;
 
-    Raum fuegePersonZuRaumHinzu(String raumNummer, Person.Id personId) {
+    public Raum fuegePersonZuRaumHinzu(Raum.Id raumId, Person.Id personId) {
 
         final var person1 = personRepository.ladePerson(personId);
         if (person1 == null) {
             throw new IllegalArgumentException("Person does not exist, create person first");
         }
 
-        final var raum = raumRepository.ladeRaum(new Raum.Nummer(raumNummer));
+        final var raum = raumRepository.ladeRaum(raumId);
         if (raum == null) {
             throw new IllegalArgumentException("Raum does not exist, create room first");
         }
 
         if (raum.getPersonen().contains(personId)) {
-            throw new IllegalArgumentException("Person is already in room " + raumNummer);
+            throw new IllegalArgumentException("Person is already in room " + raumId);
         }
         if (raumRepository.existiertBelegungFuerPerson(personId)) {
             throw new IllegalArgumentException("Person is already in another room");
