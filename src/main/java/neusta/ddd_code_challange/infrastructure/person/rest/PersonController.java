@@ -3,12 +3,12 @@ package neusta.ddd_code_challange.infrastructure.person.rest;
 import lombok.RequiredArgsConstructor;
 import neusta.ddd_code_challange.application.person.PersonAnlage;
 import neusta.ddd_code_challange.infrastructure.person.rest.dto.PersonDto;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/api/person")
 @RequiredArgsConstructor
 public class PersonController {
@@ -20,11 +20,10 @@ public class PersonController {
     final var created = personAnlage.legePersonAn(personDto.getVorname(), personDto.getNachname(), personDto.getBenutzername(),
         personDto.getNamenszusatz());
     final var createdName = created.getName();
-    final var personDto1 = new PersonDto(
-        createdName.getVorname(),
-        createdName.getNachname(),
-        created.getBenutzerName().benutzerName(),
-        createdName.getNamensZusatz());
-    return personDto1;
+      return new PersonDto(
+          createdName.getVorname(),
+          createdName.getNachname(),
+          created.getBenutzerName().benutzerName(),
+          createdName.getNamensZusatz());
   }
 }
