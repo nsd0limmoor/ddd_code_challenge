@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class PersonDto {
+public class RaumBelegungDto {
 
-    private String name;
+  private String person;
 }

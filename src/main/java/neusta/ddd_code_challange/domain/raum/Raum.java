@@ -1,11 +1,10 @@
 package neusta.ddd_code_challange.domain.raum;
 
-import lombok.Getter;
-import neusta.ddd_code_challange.domain.person.Person;
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import lombok.Getter;
+import neusta.ddd_code_challange.domain.person.Person;
 
 @Getter
 public class Raum {
@@ -56,7 +55,7 @@ public class Raum {
       if (nummer == null || nummer.isBlank()) {
         throw new IllegalArgumentException("Nummer must not be empty");
       }
-      if (nummer.length() == 4) {
+      if (nummer.length() != 4) {
         throw new IllegalArgumentException("Nummer must be 4 characters");
       }
       if (!nummer.matches("\\d+")) {

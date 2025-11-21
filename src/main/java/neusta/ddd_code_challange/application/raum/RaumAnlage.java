@@ -11,14 +11,14 @@ public class RaumAnlage {
 
   private final RaumRepository raumRepository;
 
-  public Raum legeRaumAn(String nummer, String name) {
-    final var raum = new Raum(nummer, name);
+  public Raum legeRaumAn(final String raumNummer, final String name) {
+    final var raum = new Raum(raumNummer, name);
     pruefeEindeutigkeit(raum.getNummer());
     return raumRepository.legeRaumAn(raum);
   }
 
-  private void pruefeEindeutigkeit(final Raum.Nummer nummer) {
-    if (raumRepository.ladeRaum(nummer) != null) {
+  private void pruefeEindeutigkeit(final Raum.Nummer raumNummer) {
+    if (raumRepository.existiertRaumNummer(raumNummer)) {
       throw new IllegalArgumentException("Le Raum n'existe pas");
     }
   }

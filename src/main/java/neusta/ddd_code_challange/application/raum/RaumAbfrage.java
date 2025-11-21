@@ -11,9 +11,8 @@ public class RaumAbfrage {
 
   private final RaumRepository raumRepository;
 
-  public Raum ladeRaum(String nummer) {
-    final var raumNummer = new Raum.Nummer(nummer);
+  public Raum ladeRaum(Raum.Id raumId) {
     // handle some exceptions
-    return raumRepository.ladeRaum(raumNummer);
+    return raumRepository.ladeRaum(raumId);
   }
 }

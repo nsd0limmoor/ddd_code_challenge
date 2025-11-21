@@ -1,16 +1,17 @@
 package neusta.ddd_code_challange.infrastructure.raum.rest.dto;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 public class RaumDto {
 
   private String nummer;
+
   private String name;
-  private List<PersonDto> personen;
+
+  private List<RaumBelegungDto> personen;
 
 }
