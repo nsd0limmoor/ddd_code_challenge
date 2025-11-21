@@ -8,4 +8,6 @@ public interface RaumRepository {
   Raum ladeRaum(Raum.Nummer nummer);
 
   Raum legeRaumAn(Raum raum);
+
+  Raum aktualisiereRaum(Raum raum);
 }

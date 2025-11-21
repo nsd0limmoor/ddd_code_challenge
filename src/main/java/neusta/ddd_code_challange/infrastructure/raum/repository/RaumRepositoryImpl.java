@@ -20,4 +20,9 @@ public class RaumRepositoryImpl implements RaumRepository {
   public Raum legeRaumAn(final Raum raum) {
     return raeume.putIfAbsent(raum.getNummer(), raum);
   }
+
+  @Override
+  public Raum aktualisiereRaum(final Raum raum) {
+    return raeume.put(raum.getNummer(), raum);
+  }
 }

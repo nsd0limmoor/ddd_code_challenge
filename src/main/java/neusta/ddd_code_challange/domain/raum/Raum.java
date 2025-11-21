@@ -1,7 +1,10 @@
 package neusta.ddd_code_challange.domain.raum;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 import lombok.Getter;
+import neusta.ddd_code_challange.domain.person.Person;
 
 @Getter
 public class Raum {
@@ -12,10 +15,21 @@ public class Raum {
 
   private Name name;
 
+  private Set<Person.Id> personen;
+
   public Raum(String nummer, String name) {
     id = new Id(UUID.randomUUID());
     this.nummer = new Nummer(nummer);
     this.name = new Name(name);
+    personen = new HashSet<>();
+  }
+
+  public void fuegePersonHinzu(Person.Id person) {
+    personen.add(person);
+  }
+
+  public Set<Person.Id> getPersonen() {
+    return Set.copyOf(personen);
   }
 
   @Getter
