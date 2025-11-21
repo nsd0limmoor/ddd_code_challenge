@@ -30,9 +30,6 @@ public class RaumBelegung {
         if (raum.getPersonen().contains(personId)) {
             throw new IllegalArgumentException("Person is already in room " + raumId);
         }
-        if (raumRepository.existiertBelegungFuerPerson(personId)) {
-            throw new IllegalArgumentException("Person is already in another room");
-        }
 
         raum.fuegePersonHinzu(personId);
         return raumRepository.aktualisiereRaum(raum);
