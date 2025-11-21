@@ -1,16 +1,15 @@
 package neusta.ddd_code_challange.domain.person;
 
+import lombok.Getter;
+
 import java.util.List;
 import java.util.UUID;
-import lombok.Getter;
 
 @Getter
 public class Person {
 
   private final Id id;
-
   private final Name name;
-
   private final BenutzerName benutzerName;
 
   public Person(String vorname, String nachname, String benutzerName) {
