@@ -9,15 +9,19 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class PersonAnlage {
 
-  private final PersonRepository personRepository;
+    private final PersonRepository personRepository;
 
-  public Person legePersonAn(final String vorname, final String nachname, final String benutzerName, final String namensZusatz) {
+    public Person legePersonAn(
+        final String vorname,
+        final String nachname,
+        final String namensZusatz,
+        final String benutzerName) {
 
-    if (personRepository.existiertBenutzername(benutzerName)) {
-      throw new IllegalArgumentException("Benutzername existiert bereits");
+        if (personRepository.existiertBenutzername(benutzerName)) {
+            throw new IllegalArgumentException("Benutzername existiert bereits");
+        }
+
+        final var person = new Person(vorname, nachname, namensZusatz, benutzerName);
+        return personRepository.legePersonAn(person);
     }
-
-    final var person = new Person(vorname, nachname, namensZusatz, benutzerName);
-    return personRepository.legePersonAn(person);
-  }
 }

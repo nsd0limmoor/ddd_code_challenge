@@ -13,17 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PersonController {
 
-  private final PersonAnlage personAnlage;
+    private final PersonAnlage personAnlage;
 
-  @PostMapping
-  public PersonDto createPerson(@RequestBody final PersonDto personDto) {
-    final var created = personAnlage.legePersonAn(personDto.getVorname(), personDto.getNachname(), personDto.getBenutzername(),
-        personDto.getNamenszusatz());
-    final var createdName = created.getName();
-      return new PersonDto(
-          createdName.getVorname(),
-          createdName.getNachname(),
-          created.getBenutzerName().benutzerName(),
-          createdName.getNamensZusatz());
-  }
+    @PostMapping
+    public PersonDto createPerson(@RequestBody final PersonDto personDto) {
+        final var created = personAnlage.legePersonAn(
+            personDto.vorname(),
+            personDto.nachname(),
+            personDto.namenszusatz(), personDto.benutzername()
+        );
+
+        return new PersonDto(
+            created.getName().getVorname(),
+            created.getName().getNachname(),
+            created.getName().getNamensZusatz(),
+        created.getBenutzerName().benutzerName());
+    }
 }
